@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:17:05 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/22 19:07:58 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/22 19:17:39 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
-	c = '\n';
 	i = 0;
 	while (s[i])
 	{
@@ -34,7 +33,7 @@ char	*ft_strchr(char *s, int c)
 			return (&s[i]);
 		i++;
 	}
-	if ((char)c == '\0')
+	if ((unsigned char)c == '\0')
 		return (&s[i]);
 	return (NULL);
 }
@@ -66,6 +65,26 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+char	*ft_strdup(char *s)
+{
+	char	cpy;
+	size_t	len;
+	size_t	i;
+
+	len = ft_strlen(s);
+	cpy = malloc(len + 1);
+	if (!cpy)
+		return (NULL);
+	i = len;
+	while (i > 0)
+	{
+		cpy[len] = s[i];
+		i--;
+	}
+	cpy[len] = '\0';
+	return (cpy);
 }
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
