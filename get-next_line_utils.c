@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:17:05 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/22 18:53:33 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/22 19:07:58 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,29 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	result[i] = '\0';
 	return (result);
+}
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	size_t	len_s;
+	char	*ptr;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (start >= len_s)
+		return (ft_strdup(""));
+	if (len > len_s - start)
+		len = len_s - start;
+	ptr = malloc(len + 1);
+	if (!ptr)
+		return (NULL);
+	while (s[i] && len + 1)
+	{
+		ptr = s + start;
+		i++;
+	}
+	ptr = '\0';
+	return (ptr);
 }
