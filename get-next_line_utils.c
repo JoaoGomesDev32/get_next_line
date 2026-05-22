@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:17:05 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/22 19:17:39 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/22 19:33:09 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,32 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*result;
 	int		i;
 
-	if (!s2)
+	if (!s1)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	result = malloc(len_s1 + len_s2 + 1);
 	if (!result)
 		return (NULL);
-	while (s1[i])
+	i = 0;
+	while (i < len_s1)
 	{
 		result[i] = s1[i];
 		i++;
 	}
 	i = 0;
-	while (s2[i] && (len_s1 + 1))
+	while (i < len_s2)
 	{
 		result[len_s1 + i] = s2[i];
 		i++;
 	}
-	result[i] = '\0';
+	result[len_s1 + len_s2] = '\0';
 	return (result);
 }
 
 char	*ft_strdup(char *s)
 {
-	char	cpy;
+	char	*cpy;
 	size_t	len;
 	size_t	i;
 
@@ -77,11 +78,11 @@ char	*ft_strdup(char *s)
 	cpy = malloc(len + 1);
 	if (!cpy)
 		return (NULL);
-	i = len;
-	while (i > 0)
+	i = 0;
+	while (i < len)
 	{
-		cpy[len] = s[i];
-		i--;
+		cpy[i] = s[i];
+		i++;
 	}
 	cpy[len] = '\0';
 	return (cpy);
@@ -103,11 +104,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	ptr = malloc(len + 1);
 	if (!ptr)
 		return (NULL);
-	while (s[i] && len + 1)
+	i = 0;
+	while (i < len)
 	{
-		ptr = s + start;
+		ptr[i] = s[start + i];
 		i++;
 	}
-	ptr = '\0';
+	ptr[i] = '\0';
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:06:43 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/22 18:11:03 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/22 19:35:48 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*update_leftover(char *leftover);
 size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 
 #endif
