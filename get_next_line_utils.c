@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get-next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:17:05 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/22 19:33:09 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/23 12:52:10 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
@@ -45,25 +47,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*result;
 	int		i;
 
-	if (!s1)
-		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	result = malloc(len_s1 + len_s2 + 1);
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (i < len_s1)
-	{
+	i = -1;
+	while (s1 && s1[++i])
 		result[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (i < len_s2)
-	{
+	i = -1;
+	while (s2[++i])
 		result[len_s1 + i] = s2[i];
-		i++;
-	}
 	result[len_s1 + len_s2] = '\0';
 	return (result);
 }

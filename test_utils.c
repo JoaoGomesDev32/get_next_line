@@ -25,7 +25,8 @@ int	main(void)
 	// ft_strjoin
 	printf("=== ft_strjoin ===\n");
 	result = ft_strjoin("hello", "\nworld");
-	printf("%s\n", result);   // hello\nworld
+	printf("[%s]\n", result);   // devia mostrar [hello\nworld] em duas linhas
+	printf("len: %zu\n", ft_strlen(result));  // devia mostrar 11
 	free(result);
 	result = ft_strjoin(NULL, "world");
 	printf("%s\n", result);   // world
@@ -37,7 +38,7 @@ int	main(void)
 	printf("%s\n", result);   // world
 	free(result);
 	result = ft_substr("hello", 10, 5);
-	printf("%s\n", result);   // (vazio)
+	printf("[%s]\n", result);   // devia mostrar []
 	free(result);
 
 	return (0);
