@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 13:05:53 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/24 13:32:46 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/24 13:46:18 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*update_leftover(char *leftover)
 	}
 	rest = ft_strdup(newline + 1);
 	free(leftover);
-	return rest;
+	return (rest);
 }
 
 char	*read_collect_leftover(int fd, char *leftover)
