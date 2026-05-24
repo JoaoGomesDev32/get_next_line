@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 13:05:53 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/24 12:25:16 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/24 13:32:46 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,30 @@ char	*update_leftover(char *leftover)
 	rest = ft_strdup(newline + 1);
 	free(leftover);
 	return rest;
+}
+
+char	*read_collect_leftover(int fd, char *leftover)
+{
+	char	buffer[BUFFER_SIZE + 1];
+	int		bytes_read;
+	char	*joined;
+
+	while (1)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		joined = ft_strjoin(leftover, buffer);
+		free(leftover);
+		leftover = joined;
+		if (ft_strchr(leftover, '\n'))
+			break ;
+	}
+	if (bytes_read == -1)
+	{
+		free(leftover);
+		return (NULL);
+	}
+	return (leftover);
 }
