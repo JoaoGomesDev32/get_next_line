@@ -6,7 +6,7 @@
 /*   By: joagomes <joagomes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 11:16:49 by joagomes          #+#    #+#             */
-/*   Updated: 2026/05/25 15:36:01 by joagomes         ###   ########.fr       */
+/*   Updated: 2026/05/25 16:12:41 by joagomes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ char	*read_collect_leftover(int fd, char *leftover)
 	}
 	free(buffer);
 	if (bytes_read == -1)
-	{
-		free(leftover);
-		return (NULL);
-	}
+		return (free(leftover), NULL);
 	return (leftover);
 }
 
@@ -77,7 +74,7 @@ char	*get_next_line(int fd)
 {
 	static char	*leftover;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	leftover = read_collect_leftover(fd, leftover);
