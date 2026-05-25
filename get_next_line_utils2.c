@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
+/*   By: joagomes <joagomes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 13:05:53 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/24 13:46:18 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/25 14:39:38 by joagomes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*update_leftover(char *leftover)
 	char	*rest;
 
 	newline = ft_strchr(leftover, '\n');
-	if (!leftover || !newline[1])
+	if (!newline || !newline[1])
 	{
 		free(leftover);
 		return (NULL);
@@ -45,10 +45,13 @@ char	*update_leftover(char *leftover)
 
 char	*read_collect_leftover(int fd, char *leftover)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	*buffer;
 	int		bytes_read;
 	char	*joined;
 
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
 	while (1)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -61,6 +64,7 @@ char	*read_collect_leftover(int fd, char *leftover)
 		if (ft_strchr(leftover, '\n'))
 			break ;
 	}
+	free(buffer);
 	if (bytes_read == -1)
 	{
 		free(leftover);
