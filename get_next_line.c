@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joagomes <joagomes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 11:16:49 by joagomes          #+#    #+#             */
-/*   Updated: 2026/05/25 16:12:41 by joagomes         ###   ########.fr       */
+/*   Updated: 2026/05/26 20:53:38 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,24 @@ char	*read_collect_leftover(int fd, char *leftover)
 	free(buffer);
 	if (bytes_read == -1)
 		return (free(leftover), NULL);
+	if (!leftover || !leftover[0])
+		return (free(leftover), NULL);
 	return (leftover);
 }
 
-char	*extract_line(char *letfover)
+char	*extract_line(char *leftover)
 {
 	char	*newline;
 	size_t	len;
 
-	if (!letfover || !letfover[0])
+	if (!leftover || !leftover[0])
 		return (NULL);
-	newline = ft_strchr(letfover, '\n');
+	newline = ft_strchr(leftover, '\n');
 	if (newline)
-		len = (newline - letfover) + 1;
+		len = (newline - leftover) + 1;
 	else
-		len = ft_strlen(letfover);
-	return (ft_substr(letfover, 0, len));
+		len = ft_strlen(leftover);
+	return (ft_substr(leftover, 0, len));
 }
 
 char	*update_leftover(char *leftover)
@@ -78,8 +80,12 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	leftover = read_collect_leftover(fd, leftover);
-	if (!leftover)
+	if (!leftover || !leftover[0])
+	{
+		free(leftover);
+		leftover = NULL;
 		return (NULL);
+	}
 	line = extract_line(leftover);
 	leftover = update_leftover(leftover);
 	return (line);
