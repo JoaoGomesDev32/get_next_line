@@ -6,13 +6,13 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 11:16:49 by joagomes          #+#    #+#             */
-/*   Updated: 2026/05/26 20:53:38 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/28 18:28:14 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_collect_leftover(int fd, char *leftover)
+static char	*read_collect_leftover(int fd, char *leftover)
 {
 	char	*buffer;
 	int		bytes_read;
@@ -41,7 +41,7 @@ char	*read_collect_leftover(int fd, char *leftover)
 	return (leftover);
 }
 
-char	*extract_line(char *leftover)
+static char	*extract_line(char *leftover)
 {
 	char	*newline;
 	size_t	len;
@@ -56,7 +56,7 @@ char	*extract_line(char *leftover)
 	return (ft_substr(leftover, 0, len));
 }
 
-char	*update_leftover(char *leftover)
+static char	*update_leftover(char *leftover)
 {
 	char	*newline;
 	char	*rest;

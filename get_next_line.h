@@ -6,7 +6,7 @@
 /*   By: joaog <joaog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 18:06:43 by joaog             #+#    #+#             */
-/*   Updated: 2026/05/26 20:53:10 by joaog            ###   ########.fr       */
+/*   Updated: 2026/05/28 18:30:06 by joaog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*read_collect_leftover(int fd, char *leftover);
-char	*extract_line(char *leftover);
-char	*update_leftover(char *leftover);
 size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
